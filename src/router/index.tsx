@@ -5,6 +5,7 @@ import User from '@/pages/User'
 import Blog from '@/pages/Blog'
 import Login from '@/pages/sys/login/Login'
 import Page404 from '@/pages/Page404'
+import Zustand from '@/pages/test/Zustand'
 
 export default function Router() {
   const routes = useRoutes([
@@ -15,6 +16,19 @@ export default function Router() {
         { path: 'dashboard', element: <Dashboard /> },
         { path: 'user', element: <User /> },
         { path: 'blog', element: <Blog /> },
+      ],
+    },
+    {
+      path: '/test',
+      children: [
+        {
+          element: <Navigate to="/test/zustand" />,
+          index: true,
+        },
+        {
+          path: 'zustand',
+          element: <Zustand />,
+        },
       ],
     },
     {

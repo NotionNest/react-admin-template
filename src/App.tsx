@@ -7,7 +7,6 @@ import { theme } from './theme/antd/theme'
 import './theme/index.css'
 
 export default function App() {
-  console.log('cdad')
   return (
     <BrowserRouter>
       <ConfigProvider theme={theme}>
