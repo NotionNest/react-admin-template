@@ -2,8 +2,8 @@ import i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
 
-import en from './lang/en'
-import zh from './lang/zh-CN'
+import en_US from './lang/en_US'
+import zh_CN from './lang/zh_CN'
 
 i18n
   // 检测用户语言
@@ -15,13 +15,13 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     debug: true,
-    fallbackLng: 'en', // 首选语言
+    fallbackLng: 'en_US', // 首选语言
     interpolation: {
       escapeValue: false, // https://www.i18next.com/translation-function/interpolation#unescape
     },
     resources: {
-      en: { translation: en },
-      zh: { translation: zh },
+      en_US: { translation: en_US },
+      zh_CN: { translation: zh_CN },
     },
   })
 

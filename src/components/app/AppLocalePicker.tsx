@@ -15,14 +15,14 @@ function AppLocalePicker() {
 
   const localeList: MenuProps['items'] = [
     {
-      key: 'zh',
+      key: 'zh_CN',
       label: 'Chinese',
-      icon: <SvgIcon icon="ic-locale_zh" className="mr-2" size="20" />,
+      icon: <SvgIcon icon="ic-locale_zh_CN" className="mr-2" size="20" />,
     },
     {
-      key: 'en',
+      key: 'en_US',
       label: 'English',
-      icon: <SvgIcon icon="ic-locale_en" className="mr-2" size="20" />,
+      icon: <SvgIcon icon="ic-locale_en_US" className="mr-2" size="20" />,
     },
   ]
 
@@ -39,7 +39,7 @@ function AppLocalePicker() {
       trigger={['click']}
       key={locale}
     >
-      <Button type="text" className="flex items-center justify-center cursor-pointer">
+      <Button type="text" className="flex cursor-pointer items-center justify-center">
         <SvgIcon icon={`ic-locale_${locale}`} size="20" />
       </Button>
     </Dropdown>
