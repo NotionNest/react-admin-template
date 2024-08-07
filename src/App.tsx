@@ -1,11 +1,22 @@
+import { StyleProvider } from '@ant-design/cssinjs'
+import { ConfigProvider } from 'antd'
+import { BrowserRouter } from 'react-router-dom'
+
+import Router from './router'
+import { theme } from './theme/antd/theme'
 import './theme/index.css'
 
 export default function App() {
   console.log('cdad')
   return (
-    <div className="">
-      <h1 className="bg-green text-basic-600">Hello world!</h1>
-      <div className="border border-yellow-600 bg-amber-700">1212</div>
-    </div>
+    <BrowserRouter>
+      <ConfigProvider theme={theme}>
+        <StyleProvider hashPriority="high">
+          <div className="w-full h-full">
+            <Router />
+          </div>
+        </StyleProvider>
+      </ConfigProvider>
+    </BrowserRouter>
   )
 }
