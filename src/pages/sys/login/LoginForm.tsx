@@ -1,21 +1,31 @@
 import { Alert, Button, Checkbox, Col, Divider, Form, Input, Row } from 'antd'
 import { useTranslation } from 'react-i18next'
-import { LoginStateEnum, useLoginStateContext } from './useLogin'
+import { LoginStateEnum, useLoginStateContext } from './providers/LoginStateProvider'
+import { useState } from 'react'
+import { SignInReq } from '@/api/services/userServices'
 
 function LoginForm() {
   const { t } = useTranslation()
-
-  const onFinish = (values: any) => {
-    console.log('Received values of form: ', values)
-  }
+  const [loading, setLoading] = useState(false)
 
   const { loginState, setLoginState } = useLoginStateContext()
+
   if (loginState !== LoginStateEnum.LOGIN) return null
+
+  const handleFinish = async ({ username, password }: SignInReq) => {
+    console.log('Received values of form: ', { username, password })
+    setLoading(true)
+
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+  }
+
   return (
     <>
       <div className="mb-4 text-2xl font-bold xl:text-3xl">{t('sys.login.signInFormTitle')}</div>
 
-      <Form name="normal_login" size="large" initialValues={{ remember: true }} onFinish={onFinish}>
+      <Form name="login" size="large" initialValues={{ remember: true }} onFinish={handleFinish}>
         <div className="mb-4 flex flex-col">
           <Alert
             description={`${t('sys.login.userName')}: demo@minimals.cc / ${t(
@@ -59,7 +69,7 @@ function LoginForm() {
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit" className="w-full !bg-black">
+          <Button type="primary" htmlType="submit" className="w-full !bg-black" loading={loading}>
             {t('sys.login.loginButton')}
           </Button>
         </Form.Item>
