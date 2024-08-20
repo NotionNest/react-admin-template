@@ -63,15 +63,15 @@ module.exports = {
     // 'no-unused-vars': 'off', // 禁用 no-unused-vars 规则（使用 TypeScript 规则替代）
     // 'no-case-declarations': 'off', // 关闭 case 声明检查
     // 'no-use-before-define': 'off', // 关闭定义前使用检查（使用 TypeScript 规则替代）
-    // 'no-param-reassign': 'off', // 允许修改函数参数
+    'no-param-reassign': 'off', // 允许修改函数参数
     // 'space-before-function-paren': 'off', // 关闭函数括号前空格检查
-    // 'class-methods-use-this': 'off', // 关闭类方法必须使用 this 检查
+    'class-methods-use-this': 'off', // 关闭类方法必须使用 this 检查
     // 'jsx-a11y/click-events-have-key-events': 'off', // 关闭点击事件必须有键盘事件检查
     // 'jsx-a11y/interactive-supports-focus': 'off', // 关闭交互元素必须支持焦点检查
     // 'jsx-a11y/no-noninteractive-element-interactions': 'off', // 关闭非交互元素的交互事件检查
     // 'jsx-a11y/no-static-element-interactions': 'off', // 关闭静态元素的交互事件检查
     'react/react-in-jsx-scope': 'off', // 关闭 React 必须在 JSX 范围内检查（React 17 之后不再需要手动引入）
-    // 'react/button-has-type': 'off', // 关闭按钮必须有 type 属性检查
+    'react/button-has-type': 'off', // 关闭按钮必须有 type 属性检查
     // 'react/require-default-props': 'off', // 关闭要求默认属性检查
     // 'react/no-array-index-key': 'off', // 关闭使用数组索引作为 key 的检查
     // 'react/jsx-props-no-spreading': 'off', // 关闭 JSX 属性展开检查
@@ -98,12 +98,12 @@ module.exports = {
     // '@typescript-eslint/ban-ts-comment': 'off', // 关闭禁止 @ts-comment 注释检查
     // '@typescript-eslint/ban-types': 'off', // 关闭禁止某些类型的检查
     // '@typescript-eslint/explicit-function-return-type': 'off', // 关闭显式函数返回类型检查
-    // '@typescript-eslint/no-explicit-any': 'off', // 关闭禁止使用 any 类型检查
+    '@typescript-eslint/no-explicit-any': 'off', // 关闭禁止使用 any 类型检查
     // '@typescript-eslint/no-var-requires': 'off', // 关闭禁止使用 require 语句检查
     // '@typescript-eslint/no-empty-function': 'off', // 关闭禁止空函数检查
     // '@typescript-eslint/no-use-before-define': 'off', // 关闭禁止在定义前使用检查
     // '@typescript-eslint/no-non-null-assertion': 'off', // 关闭禁止非空断言检查
-    // '@typescript-eslint/no-shadow': 'off', // 关闭禁止变量声明遮蔽检查
+    '@typescript-eslint/no-shadow': 'off', // 关闭禁止变量声明遮蔽检查
     // '@typescript-eslint/explicit-module-boundary-types': 'off', // 关闭显式模块边界类型检查
   },
 }

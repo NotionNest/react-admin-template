@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
-import { LoginStateEnum, useLoginStateContext } from './providers/LoginStateProvider'
 import { SvgIcon } from '@/components/icon'
 import { Button, Form, Input } from 'antd'
+import { LoginStateEnum, useLoginStateContext } from './providers/LoginStateProvider'
 import { ReturnButton } from './components/ReturnButton'
 
 function ResetForm() {

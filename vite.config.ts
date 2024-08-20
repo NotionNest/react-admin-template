@@ -20,4 +20,7 @@ export default defineConfig({
       '#': path.resolve(__dirname, 'types'),
     },
   },
+  server: {
+    host: '0.0.0.0',
+  },
 })

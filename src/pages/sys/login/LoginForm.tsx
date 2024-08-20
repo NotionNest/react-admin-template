@@ -1,8 +1,8 @@
 import { Alert, Button, Checkbox, Col, Divider, Form, Input, Row } from 'antd'
-import { useTranslation } from 'react-i18next'
-import { LoginStateEnum, useLoginStateContext } from './providers/LoginStateProvider'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { SignInReq } from '@/api/services/userServices'
+import { LoginStateEnum, useLoginStateContext } from './providers/LoginStateProvider'
 
 function LoginForm() {
   const { t } = useTranslation()
@@ -40,7 +40,7 @@ function LoginForm() {
           name="username"
           rules={[{ required: true, message: t('sys.login.accountPlaceholder') }]}
         >
-          <Input placeholder={t('sys.login.userName')}></Input>
+          <Input placeholder={t('sys.login.userName')} />
         </Form.Item>
 
         <Form.Item

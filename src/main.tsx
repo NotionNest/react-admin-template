@@ -1,11 +1,12 @@
+import { StyleProvider } from '@ant-design/cssinjs'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { StyleProvider } from '@ant-design/cssinjs'
 import { ConfigProvider } from 'antd'
 import App from './App'
 import { theme } from './theme/antd/theme'
 
 import './theme/index.css'
+// eslint-disable-next-line import/no-unresolved
 import 'virtual:svg-icons-register'
 import './locales/i18n'
 

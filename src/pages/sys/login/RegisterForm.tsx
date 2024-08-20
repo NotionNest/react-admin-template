@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
+import { Button, Form, Input } from 'antd'
 import { LoginStateEnum, useLoginStateContext } from './providers/LoginStateProvider'
 import { ReturnButton } from './components/ReturnButton'
-import { Button, Form, Input } from 'antd'
 
 function RegisterForm() {
   const { t } = useTranslation()

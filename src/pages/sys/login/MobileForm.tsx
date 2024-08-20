@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
-import { LoginStateEnum, useLoginStateContext } from './providers/LoginStateProvider'
 import { Button, Col, Form, Input, Row, Statistic } from 'antd'
 import { useState } from 'react'
+import { LoginStateEnum, useLoginStateContext } from './providers/LoginStateProvider'
 import { ReturnButton } from './components/ReturnButton'
 
 const { Countdown } = Statistic
@@ -9,7 +9,7 @@ const { Countdown } = Statistic
 function MobileForm() {
   const { t } = useTranslation()
 
-  const { loginState, setLoginState, backToLogin } = useLoginStateContext()
+  const { loginState, backToLogin } = useLoginStateContext()
 
   const [countdown, setCountdown] = useState(0)
   const [second, setSecond] = useState(0)

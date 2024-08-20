@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate, RouterProvider, useRoutes } from 'react-router-dom'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import type { RouteObject } from 'react-router-dom'
 
 import Dashboard from '@/pages/Dashboard'

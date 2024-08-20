@@ -1,6 +1,5 @@
-// import apiClient from '../apiClient'
-
 import { UserInfo, UserToken } from '#/entity'
+import apiClient from '../apiClient'
 
 export interface SignInReq {
   username: string
@@ -16,11 +15,10 @@ enum Api {
   User = '/user/',
 }
 
-// const signin = (data: SignInReq) => apiClient.post<SignInRes>({ url: Api.SignIn, data })
+const signin = (data: SignInReq) => apiClient.post<SignInRes>({ url: Api.SignIn, data })
+const findById = (id: string) => apiClient.get({ url: `${Api.User}${id}` })
 
-// const findById = (id: string) => apiClient.get({ url: `${Api.User}${id}` })
-
-// export default {
-//   signin,
-//   findById,
-// }
+export default {
+  signin,
+  findById,
+}
