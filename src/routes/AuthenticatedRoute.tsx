@@ -1,5 +1,6 @@
 import { useUserToken } from '@/store/userStore'
-import { Navigate, Outlet } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
+import BasicLayout from '@/layouts'
 
 export default function UnauthenticatedRoute() {
   const token = useUserToken()
@@ -13,5 +14,5 @@ export default function UnauthenticatedRoute() {
   }
 
   // 如果已经授权，则直接渲染子组件
-  return <Outlet />
+  return <BasicLayout />
 }

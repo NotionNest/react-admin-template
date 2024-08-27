@@ -95,7 +95,7 @@ module.exports = {
     // ],
     // '@typescript-eslint/no-unused-expressions': 'off', // 关闭未使用表达式检查
     // '@typescript-eslint/ban-ts-ignore': 'off', // 关闭禁止 @ts-ignore 注释检查
-    // '@typescript-eslint/ban-ts-comment': 'off', // 关闭禁止 @ts-comment 注释检查
+    '@typescript-eslint/ban-ts-comment': 'off', // 关闭禁止 @ts-comment 注释检查
     // '@typescript-eslint/ban-types': 'off', // 关闭禁止某些类型的检查
     // '@typescript-eslint/explicit-function-return-type': 'off', // 关闭显式函数返回类型检查
     '@typescript-eslint/no-explicit-any': 'off', // 关闭禁止使用 any 类型检查

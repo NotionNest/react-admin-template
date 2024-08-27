@@ -6,12 +6,12 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     screens: {
-      xs: '400px',
-      sm: '640px',
+      xs: '480px',
+      sm: '576px',
       md: '768px',
-      lg: '1024px',
-      xl: '1280px',
-      '2xl': '1536px',
+      lg: '992px',
+      xl: '1200px',
+      '2xl': '1600px',
     },
     colors: {
       basic: {
@@ -34,15 +34,8 @@ export default {
       sans: ['Public Sans', 'sans-serif'],
     },
     extend: {
-      colors: {
-        black: '#000000',
-        green: '#00A76F',
-        blue: '#1fb6ff',
-        purple: '#7e5bef',
-        pink: '#ff49db',
-        orange: '#ff7849',
-        yellow: '#ffc82c',
-        gray: '#637381',
+      transitionProperty: {
+        height: 'height',
       },
     },
   },

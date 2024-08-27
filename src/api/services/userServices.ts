@@ -16,6 +16,7 @@ enum Api {
 }
 
 const signin = (data: SignInReq) => apiClient.post<SignInRes>({ url: Api.SignIn, data })
+
 const findById = (id: string) => apiClient.get({ url: `${Api.User}${id}` })
 
 export default {
