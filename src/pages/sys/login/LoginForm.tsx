@@ -1,22 +1,41 @@
-import { Alert, Button, Checkbox, Col, Divider, Form, Input, Row } from 'antd'
+import { Alert, Button, Checkbox, Col, Divider, Form, Input, notification, Row } from 'antd'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { LoginStateEnum, useLoginStateContext } from './useLogin'
+import { SignInReq } from '@/api/services/userServices'
+import { useSignIn } from '@/store/userStore'
+import { LoginStateEnum, useLoginStateContext } from './providers/LoginStateProvider'
 
 function LoginForm() {
   const { t } = useTranslation()
-
-  const onFinish = (values: any) => {
-    console.log('Received values of form: ', values)
-  }
+  const [loading, setLoading] = useState(false)
 
   const { loginState, setLoginState } = useLoginStateContext()
+
+  const signIn = useSignIn()
+
   if (loginState !== LoginStateEnum.LOGIN) return null
+
+  const handleFinish = async ({ username, password }: SignInReq) => {
+    setLoading(true)
+
+    try {
+      await signIn({ username, password })
+      notification.info({
+        message: t('sys.login.loginSuccessTitle'),
+        description: `${t('sys.login.loginSuccessDesc')}: ${username}`,
+        duration: 3,
+      })
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <>
       <div className="mb-4 text-2xl font-bold xl:text-3xl">{t('sys.login.signInFormTitle')}</div>
 
-      <Form name="normal_login" size="large" initialValues={{ remember: true }} onFinish={onFinish}>
-        <div className="mb-4 flex flex-col">
+      <Form name="login" size="large" initialValues={{ remember: true }} onFinish={handleFinish}>
+        <div className="flex flex-col mb-4">
           <Alert
             description={`${t('sys.login.userName')}: demo@minimals.cc / ${t(
               'sys.login.password',
@@ -30,7 +49,7 @@ function LoginForm() {
           name="username"
           rules={[{ required: true, message: t('sys.login.accountPlaceholder') }]}
         >
-          <Input placeholder={t('sys.login.userName')}></Input>
+          <Input placeholder={t('sys.login.userName')} />
         </Form.Item>
 
         <Form.Item
@@ -59,7 +78,7 @@ function LoginForm() {
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit" className="w-full !bg-black">
+          <Button type="primary" htmlType="submit" className="!bg-black w-full" loading={loading}>
             {t('sys.login.loginButton')}
           </Button>
         </Form.Item>
@@ -88,7 +107,7 @@ function LoginForm() {
 
         <Divider className="!text-xs !text-[#00000073]">{t('sys.login.otherSignIn')}</Divider>
 
-        <div className="flex cursor-pointer justify-around text-2xl">1, 2, 3</div>
+        <div className="flex justify-around text-2xl cursor-pointer">1, 2, 3</div>
       </Form>
     </>
   )

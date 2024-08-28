@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import AppLocalePicker from '@/components/app/AppLocalePicker'
-import { LoginStateProvider, useLoginStateContext } from './useLogin'
+import DashboardImg from '@/assets/images/dashboard.png'
+import { LoginStateProvider } from './providers/LoginStateProvider'
 import LoginForm from './LoginForm'
 import MobileForm from './MobileForm'
 import QrCodeFrom from './QrCodeFrom'
@@ -9,9 +10,8 @@ import ResetForm from './ResetForm'
 
 function Login() {
   const { t } = useTranslation()
-  const { loginState } = useLoginStateContext()
   return (
-    <main className="relative flex min-h-screen flex-row">
+    <main className="relative flex flex-row min-h-screen">
       <div
         className="hidden grow flex-col items-center justify-center gap-[80px] bg-center bg-no-repeat xl:flex"
         style={{
@@ -20,7 +20,7 @@ function Login() {
         }}
       >
         <h3 className="text-2xl">{t('sys.login.signInPrimaryTitle')}</h3>
-
+        <img className="max-w-[720px" src={DashboardImg} alt="" />
         <div className="flex flex-row gap-[16px] text-2xl">{t('sys.login.signInSecondTitle')}</div>
       </div>
 
@@ -34,7 +34,7 @@ function Login() {
         </LoginStateProvider>
       </div>
 
-      <div className="absolute right-0 top-0">
+      <div className="absolute top-0 right-0">
         <AppLocalePicker />
       </div>
     </main>

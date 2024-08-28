@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
-import { LoginStateEnum, useLoginStateContext } from './useLogin'
 import { SvgIcon } from '@/components/icon'
 import { Button, Form, Input } from 'antd'
+import { LoginStateEnum, useLoginStateContext } from './providers/LoginStateProvider'
 import { ReturnButton } from './components/ReturnButton'
 
 function ResetForm() {
@@ -24,7 +24,7 @@ function ResetForm() {
       </div>
 
       <Form name="normal_login" size="large" initialValues={{ remember: true }} onFinish={onFinish}>
-        <p className="mb-4 h-14 text-center text-gray">{t('sys.login.forgetFormSecondTitle')}</p>
+        <p className="text-gray mb-4 h-14 text-center">{t('sys.login.forgetFormSecondTitle')}</p>
         <Form.Item
           name="email"
           rules={[{ required: true, message: t('sys.login.emaildPlaceholder') }]}
@@ -32,7 +32,7 @@ function ResetForm() {
           <Input placeholder={t('sys.login.email')} />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" className="w-full !bg-black">
+          <Button type="primary" htmlType="submit" className="!bg-black w-full">
             {t('sys.login.sendEmailButton')}
           </Button>
         </Form.Item>

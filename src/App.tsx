@@ -1,21 +1,12 @@
-import { StyleProvider } from '@ant-design/cssinjs'
-import { ConfigProvider } from 'antd'
-import { BrowserRouter } from 'react-router-dom'
-
-import Router from './router'
-import { theme } from './theme/antd/theme'
-import './theme/index.css'
+/*
+ * @Author: aiden
+ * @Date: 2024-08-20 20:45:21
+ * @LastEditors: aiden
+ * @LastEditTime: 2024-08-22 20:58:37
+ * @Description:
+ */
+import Router from './routes'
 
 export default function App() {
-  return (
-    <BrowserRouter>
-      <ConfigProvider theme={theme}>
-        <StyleProvider hashPriority="high">
-          <div className="w-full h-full">
-            <Router />
-          </div>
-        </StyleProvider>
-      </ConfigProvider>
-    </BrowserRouter>
-  )
+  return <Router />
 }

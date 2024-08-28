@@ -1,5 +1,5 @@
 import { createContext, useContext, useMemo, useState } from 'react'
-import type { ReactNode } from 'react'
+import type { PropsWithChildren } from 'react'
 
 export enum LoginStateEnum {
   LOGIN,
@@ -26,8 +26,7 @@ export function useLoginStateContext() {
   return context
 }
 
-export function LoginStateProvider(props: { children: ReactNode }) {
-  const { children } = props
+export function LoginStateProvider({ children }: PropsWithChildren) {
   const [loginState, setLoginState] = useState(LoginStateEnum.LOGIN)
 
   function backToLogin() {

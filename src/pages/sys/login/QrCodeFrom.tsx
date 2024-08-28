@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
-import { LoginStateEnum, useLoginStateContext } from './useLogin'
 import { QRCode } from 'antd'
+import { LoginStateEnum, useLoginStateContext } from './providers/LoginStateProvider'
 import { ReturnButton } from './components/ReturnButton'
 
 function QrCodeFrom() {

@@ -6,11 +6,11 @@ function Zustand() {
 
   return (
     <div>
-      <button className="p-4 border-2 border-black border-solid" onClick={increment}>
+      <button className="border-black border-2 border-solid p-4" onClick={increment}>
         +
       </button>
-      <span className="mx-2 text-2xl text-pink-500">{count}</span>
-      <button className="p-4 border-2 border-black border-solid" onClick={decrement}>
+      <span className="text-pink-500 mx-2 text-2xl">{count}</span>
+      <button className="border-black border-2 border-solid p-4" onClick={decrement}>
         -
       </button>
     </div>

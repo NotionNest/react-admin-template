@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
-import { LoginStateEnum, useLoginStateContext } from './useLogin'
-import { ReturnButton } from './components/ReturnButton'
 import { Button, Form, Input } from 'antd'
+import { LoginStateEnum, useLoginStateContext } from './providers/LoginStateProvider'
+import { ReturnButton } from './components/ReturnButton'
 
 function RegisterForm() {
   const { t } = useTranslation()
@@ -42,18 +42,18 @@ function RegisterForm() {
           <Input.Password type="password" placeholder={t('sys.login.confirmPassword')} />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" className="w-full !bg-black">
+          <Button type="primary" htmlType="submit" className="!bg-black w-full">
             {t('sys.login.registerButton')}
           </Button>
         </Form.Item>
 
-        <div className="mb-2 text-xs text-gray">
+        <div className="text-gray mb-2 text-xs">
           <span>{t('sys.login.registerAndAgree')}</span>
-          <a href="./" className="text-sm !text-black !underline">
+          <a href="./" className="!text-black text-sm !underline">
             {t('sys.login.termsOfService')}
           </a>
           {' & '}
-          <a href="./" className="text-sm !text-black !underline">
+          <a href="./" className="!text-black text-sm !underline">
             {t('sys.login.privacyPolicy')}
           </a>
         </div>
