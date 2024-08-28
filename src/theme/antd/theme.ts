@@ -9,5 +9,11 @@ export const theme: ThemeConfig = {
     colorInfo: '#00b8d9',
     colorInfoBg: '#CAFDF5',
     wireframe: false,
+    borderRadius: 4,
+  },
+  components: {
+    Menu: {
+      controlItemBgActive: 'rgba(0, 234, 112, 0.08)',
+    },
   },
 }

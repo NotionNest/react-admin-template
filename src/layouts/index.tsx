@@ -1,15 +1,27 @@
-import { Layout } from 'antd'
 import { Outlet } from 'react-router-dom'
 import Header from './header'
-import Sider from './sider'
+import Sidebar from './sidebar'
 
 function BasicLayout() {
   return (
-    <Layout className="!min-h-[100vh]">
-      <Header />
-      <Sider />
-      <Outlet />
-    </Layout>
+    <div>
+      <div className="flex h-screen overflow-hidden">
+        <Sidebar />
+        <div className="relative flex flex-col flex-1 overflow-x-hidden overflow-y-auto">
+          <Header />
+          <main>
+            <div>
+              <Outlet />
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+    // <Layout className="!min-h-[100vh]">
+    //   <Header />
+    //   <Sider />
+    //   <Outlet />
+    // </Layout>
   )
 }
 

@@ -28,6 +28,31 @@ export default {
         150: '#F3FCFE',
         100: '#cdfcff',
         50: '#ebffff',
+        black: '#000000',
+        green: '#00A76F',
+        blue: '#1fb6ff',
+        purple: '#7e5bef',
+        pink: '#ff49db',
+        orange: '#ff7849',
+        yellow: '#ffc82c',
+
+        gray: '#637381',
+        hover: '#63738114',
+        'gray-100': '#F9FAFB',
+        'gray-200': '#F4F6F8',
+        'gray-300': '#DFE3E8',
+        'gray-400': '#C4CDD5',
+        'gray-500': '#F9FAFB',
+        'gray-600': '#637381',
+        'gray-700': '#454F5B',
+        'gray-800': '#212B36',
+        'gray-900': '#161C24',
+
+        'primary-lighter': '#C8FAD6',
+        'primary-light': '#5BE49B',
+        primary: '#00A76F',
+        'primary-dark': '#007867',
+        'primary-darker': '#004B50',
       },
     },
     fontFamily: {
@@ -36,6 +61,9 @@ export default {
     extend: {
       transitionProperty: {
         height: 'height',
+      },
+      animation: {
+        'spin-slow': 'spin 8s linear infinite',
       },
     },
   },

@@ -79,7 +79,7 @@ module.exports = {
     // 'import/newline-after-import': 'warn', // 警告：导入后必须有空行
     // 'import/no-duplicates': 'warn', // 警告：禁止重复导入
     'import/no-extraneous-dependencies': 'off', // 关闭禁止使用未在 package.json 中声明的依赖项检查
-    // 'import/prefer-default-export': 'off', // 关闭偏好默认导出的检查
+    'import/prefer-default-export': 'off', // 关闭偏好默认导出的检查
     // 'import/no-cycle': 'off', // 关闭禁止循环依赖检查
     // // 'unused-imports/no-unused-imports-ts': 'warn', // 警告：未使用的导入
     // 'unused-imports/no-unused-vars-ts': [

@@ -1,8 +1,8 @@
-import { Dropdown, Button } from 'antd'
+import { Dropdown } from 'antd'
 import type { MenuProps } from 'antd'
-import { SvgIcon } from '../icon'
 import { useTranslation } from 'react-i18next'
 import { useState } from 'react'
+import { SvgIcon } from '../icon'
 
 type Locale = 'zh' | 'en'
 
@@ -39,9 +39,9 @@ function AppLocalePicker() {
       trigger={['click']}
       key={locale}
     >
-      <Button type="text" className="flex cursor-pointer items-center justify-center">
-        <SvgIcon icon={`ic-locale_${locale}`} size="20" />
-      </Button>
+      <button className="hover:bg-hover flex h-10 w-10 cursor-pointer items-center justify-center rounded-full">
+        <SvgIcon icon={`ic-locale_${locale}`} size="24" />
+      </button>
     </Dropdown>
   )
 }

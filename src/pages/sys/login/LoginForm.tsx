@@ -1,7 +1,8 @@
-import { Alert, Button, Checkbox, Col, Divider, Form, Input, Row } from 'antd'
+import { Alert, Button, Checkbox, Col, Divider, Form, Input, notification, Row } from 'antd'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { SignInReq } from '@/api/services/userServices'
+import { useSignIn } from '@/store/userStore'
 import { LoginStateEnum, useLoginStateContext } from './providers/LoginStateProvider'
 
 function LoginForm() {
@@ -10,15 +11,23 @@ function LoginForm() {
 
   const { loginState, setLoginState } = useLoginStateContext()
 
+  const signIn = useSignIn()
+
   if (loginState !== LoginStateEnum.LOGIN) return null
 
   const handleFinish = async ({ username, password }: SignInReq) => {
-    console.log('Received values of form: ', { username, password })
     setLoading(true)
 
-    setTimeout(() => {
+    try {
+      await signIn({ username, password })
+      notification.info({
+        message: t('sys.login.loginSuccessTitle'),
+        description: `${t('sys.login.loginSuccessDesc')}: ${username}`,
+        duration: 3,
+      })
+    } finally {
       setLoading(false)
-    }, 2000)
+    }
   }
 
   return (
@@ -26,7 +35,7 @@ function LoginForm() {
       <div className="mb-4 text-2xl font-bold xl:text-3xl">{t('sys.login.signInFormTitle')}</div>
 
       <Form name="login" size="large" initialValues={{ remember: true }} onFinish={handleFinish}>
-        <div className="mb-4 flex flex-col">
+        <div className="flex flex-col mb-4">
           <Alert
             description={`${t('sys.login.userName')}: demo@minimals.cc / ${t(
               'sys.login.password',
@@ -69,7 +78,7 @@ function LoginForm() {
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit" className="w-full !bg-black" loading={loading}>
+          <Button type="primary" htmlType="submit" className="!bg-black w-full" loading={loading}>
             {t('sys.login.loginButton')}
           </Button>
         </Form.Item>
@@ -98,7 +107,7 @@ function LoginForm() {
 
         <Divider className="!text-xs !text-[#00000073]">{t('sys.login.otherSignIn')}</Divider>
 
-        <div className="flex cursor-pointer justify-around text-2xl">1, 2, 3</div>
+        <div className="flex justify-around text-2xl cursor-pointer">1, 2, 3</div>
       </Form>
     </>
   )
