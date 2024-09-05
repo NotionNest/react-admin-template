@@ -2,6 +2,7 @@ import { AppLocalePicker } from '@/components/app'
 import { SvgIcon } from '@/components/icon'
 import { Drawer } from 'antd'
 import { useState } from 'react'
+import UserSetting from './UserSetting'
 import Sidebar from '../sidebar'
 
 function Header() {
@@ -34,14 +35,7 @@ function Header() {
                 <SvgIcon icon="ic-setting" size="24" />
               </button>
             </div>
-
-            <button className="hover:bg-hover flex h-10 w-10 transform-none cursor-pointer items-center justify-center rounded-full hover:scale-105">
-              <img
-                className="h-8 w-8 rounded-full"
-                src="https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_25.jpg"
-                alt="avatar"
-              />
-            </button>
+            <UserSetting />
           </div>
         </div>
       </header>
