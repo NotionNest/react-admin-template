@@ -2,15 +2,19 @@ import { useTranslation } from 'react-i18next'
 import { Button, Form, Input } from 'antd'
 import { LoginStateEnum, useLoginStateContext } from './providers/LoginStateProvider'
 import { ReturnButton } from './components/ReturnButton'
+import { useMutation } from '@tanstack/react-query'
+import userServices from '@/api/services/userServices'
 
 function RegisterForm() {
   const { t } = useTranslation()
-
+  const signUpMutation = useMutation({ mutationFn: userServices.signup })
   const { loginState, backToLogin } = useLoginStateContext()
   if (loginState !== LoginStateEnum.REGISTER) return null
 
-  const onFinish = (values: any) => {
+  const onFinish = async (values: any) => {
     console.log('Received values of form: ', values)
+    await signUpMutation.mutateAsync(values)
+    backToLogin()
   }
 
   return (
@@ -37,7 +41,17 @@ function RegisterForm() {
         </Form.Item>
         <Form.Item
           name="confirmPassword"
-          rules={[{ required: true, message: t('sys.login.confirmPasswordPlaceholder') }]}
+          rules={[
+            { required: true, message: t('sys.login.confirmPasswordPlaceholder') },
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                if (!value || getFieldValue('password') === value) {
+                  return Promise.resolve()
+                }
+                return Promise.reject(new Error(t('sys.login.diffPwd')))
+              },
+            }),
+          ]}
         >
           <Input.Password type="password" placeholder={t('sys.login.confirmPassword')} />
         </Form.Item>

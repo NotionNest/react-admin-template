@@ -20,7 +20,7 @@ function LoginForm() {
 
     try {
       await signIn({ username, password })
-      notification.info({
+      notification.success({
         message: t('sys.login.loginSuccessTitle'),
         description: `${t('sys.login.loginSuccessDesc')}: ${username}`,
         duration: 3,
@@ -35,7 +35,7 @@ function LoginForm() {
       <div className="mb-4 text-2xl font-bold xl:text-3xl">{t('sys.login.signInFormTitle')}</div>
 
       <Form name="login" size="large" initialValues={{ remember: true }} onFinish={handleFinish}>
-        <div className="flex flex-col mb-4">
+        <div className="mb-4 flex flex-col">
           <Alert
             description={`${t('sys.login.userName')}: demo@minimals.cc / ${t(
               'sys.login.password',
@@ -107,7 +107,7 @@ function LoginForm() {
 
         <Divider className="!text-xs !text-[#00000073]">{t('sys.login.otherSignIn')}</Divider>
 
-        <div className="flex justify-around text-2xl cursor-pointer">1, 2, 3</div>
+        <div className="flex cursor-pointer justify-around text-2xl">1, 2, 3</div>
       </Form>
     </>
   )

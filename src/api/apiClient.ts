@@ -2,7 +2,7 @@ import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
 import { t } from '@/locales/i18n'
 import { Result } from '#/api'
 import { ResultEnum } from '#/enum'
-import { isEmpty, isNil } from 'ramda'
+import { isEmpty } from 'ramda'
 import { message as Message } from 'antd'
 
 const axiosInstance = axios.create({
@@ -28,16 +28,11 @@ axiosInstance.interceptors.response.use(
   (res: AxiosResponse<Result>) => {
     if (!res.data) throw new Error(t('sys.api.apiRequestFailed'))
 
-    const { status, message, data } = res.data
+    const { status, data } = res.data
 
     // 业务请求成功
     const hasSuccess = data && Reflect.has(res.data, 'status') && status === ResultEnum.SUCCESS
     if (hasSuccess) {
-      let successMsg = message
-      if (isNil(message) || isEmpty(message)) {
-        successMsg = t('sys.api.operationSuccess')
-      }
-      Message.success(successMsg)
       return data
     }
     // 业务请求错误
