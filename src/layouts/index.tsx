@@ -6,8 +6,10 @@ function BasicLayout() {
   return (
     <div>
       <div className="flex h-screen overflow-hidden">
-        <Sidebar />
-        <div className="relative flex flex-col flex-1 overflow-x-hidden overflow-y-auto">
+        <div className="hidden border-r-[1px] border-dashed border-r-[#919eab33] lg:block">
+          <Sidebar />
+        </div>
+        <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
           <Header />
           <main>
             <div>

@@ -9,6 +9,7 @@ const lazyLoad = (Component: any) => (
   </Suspense>
 )
 
+// 定义懒加载组件
 const Blog = lazy(() => import('@/pages/Blog'))
 const Dashboard = lazy(() => import('@/pages/Dashboard'))
 const Page404 = lazy(() => import('@/pages/Page404'))
@@ -23,14 +24,14 @@ const routesForAuthenticatedOnly: RouteObject[] = [
     element: <AuthenticatedRoute />,
     children: [
       { path: '/', element: <Navigate to="/dashboard" replace /> },
-      { path: 'dashboard', element: <Dashboard />, index: true },
-      { path: 'user', element: lazyLoad(<User />) },
-      { path: 'blog', element: lazyLoad(<Blog />) },
+      { path: 'dashboard', element: lazyLoad(Dashboard), index: true },
+      { path: 'user', element: lazyLoad(User) },
+      { path: 'blog', element: lazyLoad(Blog) },
     ],
   },
   {
     path: '*',
-    element: <Page404 />,
+    element: lazyLoad(Page404),
   },
 ]
 
