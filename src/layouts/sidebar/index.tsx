@@ -1,65 +1,77 @@
 import { Menu } from 'antd'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate, useMatches } from 'react-router-dom'
 import Logo from '@/assets/icons/ic-logo.svg'
 import type { MenuProps } from 'antd'
 import { SvgIcon } from '@/components/icon'
-import { useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import Sider from 'antd/es/layout/Sider'
-
-type MenuItem = Required<MenuProps>['items'][number]
+import { AppRouteObject } from '#/router'
+import { MenuItemType } from 'antd/es/menu/interface'
+import { getMenuRoutes } from '@/router/menus'
 
 type SidebarProps = {
   closeSideBarDrawer?: () => void
 }
 
 function Sidebar(props: SidebarProps) {
-  const rootSubmenuKeys = ['management']
-  const { t } = useTranslation()
   const navigate = useNavigate()
+  const matches = useMatches()
   const { pathname } = useLocation()
+  const { t } = useTranslation()
 
-  const items: MenuItem[] = [
-    {
-      key: '/dashboard',
-      label: `${t('sys.menu.dashboard')}`,
-      icon: <SvgIcon icon="ic-dashboard" size="24" className="mr-6" />,
+  // router -> menu
+  const routeToMenu = useCallback(
+    (items: AppRouteObject[]) => {
+      console.log('routeToMenu')
+      return items.map((item) => {
+        const menuItem: any = {}
+        const { meta, children } = item
+        if (meta) {
+          menuItem.key = meta.key
+          menuItem.label = t(meta?.title)
+
+          if (meta.icon) {
+            menuItem.icon = <SvgIcon icon={meta.icon} size="20" className="mr-6" />
+          }
+        }
+
+        if (children) {
+          menuItem.children = routeToMenu(children)
+        }
+        return menuItem
+      })
     },
-    {
-      key: 'management',
-      label: `${t('sys.menu.management')}`,
-      icon: <SvgIcon icon="ic-dashboard" size="24" className="mr-6" />,
-      children: [
-        {
-          key: '/user',
-          label: `${t('sys.menu.user.index')}`,
-          icon: <SvgIcon icon="ic-user" size="24" className="mr-6" />,
-        },
-        {
-          key: '/blog',
-          label: `${t('sys.menu.blog')}`,
-          icon: <SvgIcon icon="ic-blog" size="24" className="mr-6" />,
-        },
-      ],
-    },
-  ]
+    [t],
+  )
 
   const [collapsed, setCollapsed] = useState(false)
   const [openKeys, setOpenKeys] = useState<string[]>([])
-  const [selectedKeys, setSelectedKeys] = useState<string[]>(['/dashboard'])
+  const [selectedKeys, setSelectedKeys] = useState<string[]>([''])
+  const [menuList, setMenuList] = useState<MenuItemType[]>([])
 
   useEffect(() => {
+    const openKeys = matches
+      .filter((match) => match.pathname !== '/')
+      .map((match) => match.pathname)
+    setOpenKeys(openKeys)
     setSelectedKeys([pathname])
-  }, [pathname, openKeys])
+  }, [pathname, matches])
+
+  useEffect(() => {
+    const menuRoutes = getMenuRoutes()
+    const menus = routeToMenu(menuRoutes)
+    setMenuList(menus)
+    console.log('created', menus)
+  }, [routeToMenu])
 
   const onOpenChange: MenuProps['onOpenChange'] = (keys) => {
     const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1)
 
-    if (latestOpenKey && rootSubmenuKeys.indexOf(latestOpenKey!) === -1) {
-      setOpenKeys(keys)
+    if (latestOpenKey) {
+      setOpenKeys([latestOpenKey])
     } else {
-      setOpenKeys(latestOpenKey ? [latestOpenKey] : [])
+      setOpenKeys([])
     }
   }
 
@@ -78,25 +90,23 @@ function Sidebar(props: SidebarProps) {
       collapsible
       collapsed={collapsed}
       collapsedWidth={90}
-      className="relative h-screen w-64 duration-300 ease-linear"
+      className="relative h-screen duration-300 ease-linear"
     >
       <NavLink to="/">
         <img className="mb-2 ml-8 mt-6 h-6 w-10" src={Logo} alt="logo" />
       </NavLink>
 
-      <div className="pl-2">
-        <Menu
-          mode="inline"
-          items={items}
-          className="!border-none"
-          defaultOpenKeys={openKeys}
-          defaultSelectedKeys={selectedKeys}
-          openKeys={openKeys}
-          selectedKeys={selectedKeys}
-          onOpenChange={onOpenChange}
-          onClick={onClick}
-        />
-      </div>
+      <Menu
+        mode="inline"
+        items={menuList}
+        className="!border-none"
+        defaultOpenKeys={openKeys}
+        defaultSelectedKeys={selectedKeys}
+        openKeys={openKeys}
+        selectedKeys={selectedKeys}
+        onOpenChange={onOpenChange}
+        onClick={onClick}
+      />
 
       <button
         onClick={toggleCollapsed}

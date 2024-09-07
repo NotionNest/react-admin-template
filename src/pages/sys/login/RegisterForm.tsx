@@ -56,18 +56,18 @@ function RegisterForm() {
           <Input.Password type="password" placeholder={t('sys.login.confirmPassword')} />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" className="!bg-black w-full">
+          <Button type="primary" htmlType="submit" className="w-full !bg-black">
             {t('sys.login.registerButton')}
           </Button>
         </Form.Item>
 
-        <div className="text-gray mb-2 text-xs">
+        <div className="mb-2 text-xs text-gray">
           <span>{t('sys.login.registerAndAgree')}</span>
-          <a href="./" className="!text-black text-sm !underline">
+          <a href="./" className="text-sm !text-black !underline">
             {t('sys.login.termsOfService')}
           </a>
           {' & '}
-          <a href="./" className="!text-black text-sm !underline">
+          <a href="./" className="text-sm !text-black !underline">
             {t('sys.login.privacyPolicy')}
           </a>
         </div>

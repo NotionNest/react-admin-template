@@ -11,7 +11,7 @@ export function ReturnButton({ onClick }: ReturnButtonProps) {
 
   return (
     <Button block type="link" onClick={onClick}>
-      <div className="text-black flex items-center justify-center hover:underline">
+      <div className="flex items-center justify-center text-black hover:underline">
         <MdArrowBackIosNew />
         <span className="text-sm">{t('sys.login.backSignIn')}</span>
       </div>

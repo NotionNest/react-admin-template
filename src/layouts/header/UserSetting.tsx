@@ -54,7 +54,7 @@ export default function UserSetting() {
     { type: 'divider' },
     {
       label: (
-        <button onClick={logout} className="text-orange font-bold">
+        <button onClick={logout} className="font-bold text-orange">
           Logout
         </button>
       ),
@@ -64,7 +64,7 @@ export default function UserSetting() {
 
   return (
     <Dropdown trigger={['click']} menu={{ items }} dropdownRender={dropdownRender}>
-      <button className="hover:bg-hover flex h-10 w-10 transform-none cursor-pointer items-center justify-center rounded-full hover:scale-105">
+      <button className="flex h-10 w-10 transform-none cursor-pointer items-center justify-center rounded-full hover:scale-105 hover:bg-hover">
         <img
           className="h-8 w-8 rounded-full"
           src="https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_25.jpg"

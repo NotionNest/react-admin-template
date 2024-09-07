@@ -10,20 +10,20 @@ function Header() {
   return (
     <>
       <header className="bg-white sticky top-0 w-full">
-        <div className="shadow-2 text-gray flex flex-grow items-center justify-between px-4 py-4 md:px-6 2xl:px-11">
+        <div className="shadow-2 flex flex-grow items-center justify-between px-4 py-4 text-gray md:px-6 2xl:px-11">
           <div className="flex items-center">
             <button
               onClick={() => setDrawerOpen(true)}
-              className="hover:bg-hover flex h-9 w-9 cursor-pointer items-center justify-center rounded-full lg:hidden"
+              className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full hover:bg-hover lg:hidden"
             >
               <SvgIcon icon="ic-menu" size="24" />
             </button>
 
-            <button className="hover:bg-hover flex h-9 w-9 cursor-pointer items-center justify-center rounded-full lg:hidden">
+            <button className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full hover:bg-hover lg:hidden">
               <SvgIcon icon="ic-search" size="20" />
             </button>
 
-            <span className="bg-hover flex h-6 cursor-pointer items-center justify-center rounded-md px-2 py-0 text-xs font-bold">
+            <span className="flex h-6 cursor-pointer items-center justify-center rounded-md bg-hover px-2 py-0 text-xs font-bold">
               ⌘K
             </span>
           </div>
@@ -31,7 +31,7 @@ function Header() {
           <div className="flex">
             <AppLocalePicker />
             <div>
-              <button className="hover:bg-hover flex h-10 w-10 transform-none cursor-pointer items-center justify-center rounded-full hover:scale-105">
+              <button className="flex h-10 w-10 transform-none cursor-pointer items-center justify-center rounded-full hover:scale-105 hover:bg-hover">
                 <SvgIcon icon="ic-setting" size="24" />
               </button>
             </div>

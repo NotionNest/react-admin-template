@@ -24,7 +24,7 @@ function ResetForm() {
       </div>
 
       <Form name="normal_login" size="large" initialValues={{ remember: true }} onFinish={onFinish}>
-        <p className="text-gray mb-4 h-14 text-center">{t('sys.login.forgetFormSecondTitle')}</p>
+        <p className="mb-4 h-14 text-center text-gray">{t('sys.login.forgetFormSecondTitle')}</p>
         <Form.Item
           name="email"
           rules={[{ required: true, message: t('sys.login.emaildPlaceholder') }]}
@@ -32,7 +32,7 @@ function ResetForm() {
           <Input placeholder={t('sys.login.email')} />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" className="!bg-black w-full">
+          <Button type="primary" htmlType="submit" className="w-full !bg-black">
             {t('sys.login.sendEmailButton')}
           </Button>
         </Form.Item>

@@ -11,7 +11,7 @@ import ResetForm from './ResetForm'
 function Login() {
   const { t } = useTranslation()
   return (
-    <main className="relative flex flex-row min-h-screen">
+    <main className="relative flex min-h-screen flex-row">
       <div
         className="hidden grow flex-col items-center justify-center gap-[80px] bg-center bg-no-repeat xl:flex"
         style={{
@@ -34,7 +34,7 @@ function Login() {
         </LoginStateProvider>
       </div>
 
-      <div className="absolute top-0 right-0">
+      <div className="absolute right-0 top-0">
         <AppLocalePicker />
       </div>
     </main>
