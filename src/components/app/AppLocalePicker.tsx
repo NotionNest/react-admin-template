@@ -39,7 +39,7 @@ function AppLocalePicker() {
       trigger={['click']}
       key={locale}
     >
-      <button className="hover:bg-hover flex h-10 w-10 cursor-pointer items-center justify-center rounded-full">
+      <button className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full hover:bg-hover">
         <SvgIcon icon={`ic-locale_${locale}`} size="24" />
       </button>
     </Dropdown>

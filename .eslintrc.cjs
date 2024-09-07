@@ -72,7 +72,7 @@ module.exports = {
     // 'jsx-a11y/no-static-element-interactions': 'off', // 关闭静态元素的交互事件检查
     'react/react-in-jsx-scope': 'off', // 关闭 React 必须在 JSX 范围内检查（React 17 之后不再需要手动引入）
     'react/button-has-type': 'off', // 关闭按钮必须有 type 属性检查
-    // 'react/require-default-props': 'off', // 关闭要求默认属性检查
+    'react/require-default-props': 'off', // 关闭要求默认属性检查
     // 'react/no-array-index-key': 'off', // 关闭使用数组索引作为 key 的检查
     // 'react/jsx-props-no-spreading': 'off', // 关闭 JSX 属性展开检查
     // 'import/first': 'warn', // 警告：所有导入必须在其他代码之前

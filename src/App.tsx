@@ -5,8 +5,9 @@
  * @LastEditTime: 2024-08-22 20:58:37
  * @Description:
  */
-import Router from './routes'
+import { RouterProvider } from 'react-router-dom'
+import router from './router'
 
 export default function App() {
-  return <Router />
+  return <RouterProvider router={router} />
 }

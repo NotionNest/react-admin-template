@@ -78,7 +78,7 @@ function LoginForm() {
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit" className="!bg-black w-full" loading={loading}>
+          <Button type="primary" htmlType="submit" className="w-full !bg-black" loading={loading}>
             {t('sys.login.loginButton')}
           </Button>
         </Form.Item>
